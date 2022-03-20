@@ -3,3 +3,5 @@
 # Clases compiladas
 *.class
 *.c
+# También podemos ignorar carpetas
+# nombreDeLaCarpeta/
