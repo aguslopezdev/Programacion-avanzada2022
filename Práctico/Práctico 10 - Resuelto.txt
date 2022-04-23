@@ -1,0 +1,131 @@
+Ejercicio 1 consulta
+
+Ejercicio 2 Demostrar propiedad (definir map y conjuncion)
+
+composicion de f de g de x: 
+f o g.x=f.(g.x)
+
+definicion de map
+map.f.[]=[]
+map.f.x:xs = f.x:(map.f.xs)
+
+Demostrar
+map(f o g).xs = (map.f) o (map.g).xs
+
+Caso base []
+
+map(f o g).[] = (map.f) o (map.g).[]
+={Def map, Def o}
+[]=map.f(map.g.[])
+={Def map}
+[]=map.f([])
+={Def map}
+[]=[]
+=
+True
+
+Caso inductivo x:xs
+
+Hip. Inductiva: map.(f o g).xs=(map f) o (map g).xs
+
+map.(f o g).(x:xs)=(map f) o (map g).(x:xs)
+
+={Def map, def o}
+(f o g).x:(map.(fog).xs)=map.f.(map.g.(x:xs))
+
+={Def map, hip. Inductiva}
+(f o g).x:((map.f)o(map.g).xs)=map.f.(g.x:map.g.xs)
+
+={Def o, Def map}
+f.(g.x):((map f) o (map g).xs)=f.(g.x):(map f.(map.g.xs))
+
+={Def o}
+f.(g.x):(map f.(map g.xs))=f.(g.x):(map f.(map.g.xs))
+------------------------------------------------------------
+Ejercicio 3
+
+Definir reversa y concatenacion(++)
+
+reversa [] = []
+reversa (x:xs) = reversa xs ++ [x]
+
+++ [] [] = []
+++ [] ys = ys
+++ (x:xs) ys = x:xs ++ ys 
+
+reversa(xs++ys) = reversa ys ++ reversa xs
+
+--------------------
+Caso base xs=[]
+
+reversa ([]++ys) = reversa ys ++ reversa []
+={Def ++, Def rev}
+reversa.ys = reversa ys ++ []
+={Por propiedad xs = xs ++ []}
+reversa.ys = reversa.ys
+={Reflexiva =}
+True
+---------------------
+Caso inductivo x:xs
+
+HI: reversa(xs++ys) = reversa ys ++ reversa xs
+
+reversa(x:xs ++ ys)
+={Def ++}
+reversa (x:(xs ++ ys))
+={Def reversa}
+reversa (xs ++ ys) ++ [x]
+={HI}
+(reversa.ys ++ reversa.xs) ++ [x]
+={Asociatividad ++}
+reversa.ys ++ (reversa.xs ++ [x])
+={Def reversa}
+reversa.ys ++ reversa.(x:xs)
+
+------------------------------------------------------------
+Ejercicio 4
+
+reversa (reversa xs) = xs
+---------------------
+Caso base xs=[]
+
+reversa (reversa []) = []
+={Def reversa}
+reversa ([]) = []
+={Def reversa}
+[]=[]
+=True
+---------------------
+Caso inductivo x:xs
+HI: reversa (reversa xs) = xs
+
+reversa (reversa x:xs)
+={Def reversa}
+reversa (reversa xs ++ [x])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

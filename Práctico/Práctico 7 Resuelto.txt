@@ -1,0 +1,155 @@
+Ejercicio 1
+
+1.
+P -> Q = -P v Q
+
+P -> Q
+={Def implicacion}
+P ? Q = Q
+={Neutro disyuncion P v False = P}
+P ? Q = Q v False
+={Distributiva del v respecto de =}
+Q v (P = False)
+={P=False es -P}
+Q v -P
+={Conmutatividad de v}
+-P v Q
+
+-------------------------------
+2.
+
+(P -> Q) v (Q -> P)
+
+={Def implicacion}
+(-P v Q) v (-Q v P)
+={Asociatividad de Conjuncion}
+(-P v P) v (-Q v Q) 
+={A v -A = True Tercero excluido}
+True v True
+={Idempotencia}
+True
+
+-------------------------------
+3. Regla dorada A ^ B = A = B = B v A
+
+P ? (P ? Q) = P
+
+P ? (P ? Q)
+={Regla dorada}
+(P ^ Q) ^ P = (P^Q) = P
+={Conmutativa}
+(Q ^ P) ^ P = (Q^P) = P
+={Asociativa}
+Q ^(P^P) = (Q^P) = P
+={idempotencia}
+Q^P = Q^P = P
+intento mio
+--------------------
+P ? (P ^ Q) = P
+= {Def. ->}
+(P ^ Q) -> P
+= {Teorema}
+¬(P ^ Q) ? P
+= {De Morgan}
+(¬P ? ¬Q) ? P
+= {Conmut, asociat.)
+(¬P ? P) ? Q
+= {Tercero excluído}
+True ? Q
+= {Absorción}
+True
+
+
+-------------------------------
+Ejercicio 2
+
+1.A = A ^ -B
+={Regla dorada}
+A = A = -B = A v -B
+={Equivalencia}
+True = -B = A v -B
+={Regla de neutro}
+-B = A v -B
+={Def implicacion}
+A -> -B
+={Teorema implicacion}
+-A v -B
+
+2.A = -A ^ B
+
+3.A = B -> A
+
+4.A = -A v -B
+
+5.A = -A v B
+={Teorema ->}
+A = A -> B
+=
+A = A v B = B
+={Regla dorada}
+A ^ B
+los dos son caballeros
+
+6.(A = A -> S) -> S
+
+7.a. A = M 
+
+-------------------------------
+(+i:Ri:Ti)
+
+R: Predicado
+Termino:depende del cuantificador
+
+Cuantificador   Elemento neutro
+para todo  	true
+existe     	false
+Sumatoria  	0
+contatoria 	1
+N          	0
+Min        	+infinito
+Max        	-infinito
+
+-------------------------------
+Ejercicio 3.1
+
+<Ni:(R.i v S.i):Ti>=<Ni:R.i:Ti>+<Ni:S.i:Ti>
+
+<Ni:(R.i v S.i):Ti>
+
+={Def N}
+<Sumat i:(R.i v S.i)^T.i:1>
+
+={Distri. ^,v}
+<Suma i:(R.i^T.i):1>+<Suma i:(R.i^T.i)v(S.i^T.i):1>
+
+
+Ejercicio 3.2
+
+Definicion de contatoria
+<Ni:R.i:T.i>=<suma i:R.i^T.i:1>
+
+<Ni:False:T.i> = 0
+
+={Def N}
+<Suma i:False^T.i:1>
+
+={logica:p^false=false}
+<Suma i:False:1>
+
+={rango vacio de sumatoria}
+0
+
+3.3
+Definicion de contatoria
+<Ni:R.i:T.i>=<suma i:R.i^T.i:1>
+
+<suma i:R.i^T.i:k>=k*<Ni:R.i:T.i>
+
+k*<Ni:R.i:T.i>
+={Def N}
+k*<suma i:R.i^T.i:1>
+={Dist (*) con (+)}
+<Suma i: R.i^T.i:1*k>
+={1*k=k}
+<Suma i: R.i^T.i:k>
+

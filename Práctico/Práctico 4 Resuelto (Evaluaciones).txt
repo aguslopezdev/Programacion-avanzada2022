@@ -1,0 +1,133 @@
+Práctico 4
+
+Ejercicio 1.----------------------------------
+
+Orden aplicativo. adentro e izquierda
+
+2 * cuadrado.(head.[2,4,5,6,7,8])
+=def head
+2 * cuadrado.(2)
+=def cuadrado
+2 * 4
+5=aritmetica
+8
+
+Orden normal. afuera izquierda
+
+2 * cuadrado.(head.[2,4,5,6,7,8])
+=def cuad
+2 * (head.[2,4,5,6,7,8]) * (head.[2,4,5,6,7,8])
+=def head
+2 * (2 * (head.[2,4,5,6,7,8]))
+=aritmetica
+4 * (head.[2,4,5,6,7,8])
+=head
+4 * 2
+=aritmetica
+8
+
+Ejercicio 2.----------------------------------
+
+con listas infinitas
+linf = 1 -> linf
+
+Orden aplicativo:
+    head.linf
+    = {def. linf}
+    head.(1 |> linf)
+    = {def. linf}
+    head.(1 |> (1 |> linf))
+    = ...
+    {Recursión infinita}
+
+Orden normal:
+    head.linf
+    = {def. linf}
+    head.(1 |> linf)
+    = {def. head}
+    1
+
+Ejercicio 3.----------------------------------
+a.
+
+f.x.0 = x
+f.x.(n+1) = cuadrado.(f.x.n)
+
+f.2.3
+
+cuadrado.(f.2.3)
+={def f}
+cuadrado.(f.2.2)
+={def cuadrado}
+(f.2.2) * (f.2.2)
+={def f}
+cuadrado.(f.2.1) * (f.2.2)
+={def cuadrado}
+((f.2.1)*(f.2.1)) * (f.2.2)
+={def f}
+(cuadrado.(f.2.0) * (f.2.1)) * (f.2.2)
+={def cuadrado}
+(((f.2.0) * (f.2.0)) * (f.2.1)) * (f.2.2)
+
+Ejercicio 4.----------------------------------
+
+cond: Bool -> A -> A -> A
+cond.p.x.y = (p -> x
+	      ¬p -> y)
+
+fac: Num -> Num
+fac.n = cond.(n=0).1.(n*fac.(n-1))
+
+fac.2
+
+a) Orden de reducción aplicativo
+
+={def. fac}
+cond.(2=0).1.(2*fac.(2-1))
+={aritmética}
+cond.(2=0).1.(2*fac.(1))
+={def. fac}
+cond.(2=0).1.(2*cond.(1=1).1.(1*fac.(1-1)))
+={aritmética}
+cond.(2=0).1.(2*cond.(1=1).1.(1*fac.(0)))
+={def. fac}
+cond.(2=0).1.(2*cond.(1=1).1.(1*cond.(0=0).1.(0*fac.(0-1))))
+={aritmética}
+...
+infinito
+
+b)Evaluación Lazy
+={def. fac}
+cond.(2=0).1.(2*fac.(2-1))
+={def. cond} -> no p
+2*fac.(2-1)
+={aritmética}
+2*fac.(1)
+={def. fac}
+2*cond.(1=0).1.(1*fac.(1-1))
+={def. cond} -> no p
+2*(1*fac.(1-1))
+={aritmética}
+2*fac.(1-1)
+={aritmética}
+2*fac.(0)
+={def. fac}
+2*cond.(0=0).1.(0*fac.(0-1))
+={def. cond} -> p
+2*1
+={aritmética}
+2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
