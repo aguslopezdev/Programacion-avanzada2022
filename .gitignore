@@ -1,7 +1,0 @@
-# Copias de seguridad
-*.bak
-# Clases compiladas
-*.class
-*.c
-# También podemos ignorar carpetas
-# nombreDeLaCarpeta/
